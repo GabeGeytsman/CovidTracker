@@ -1,0 +1,40 @@
+.p
+{
+    margin-bottom:10px;
+}
+
+.Globe-logo {
+    height: 16vmin;
+    padding: 20px;
+    pointer-events: none;
+  
+}
+
+.Header-body {
+    margin: 0px;
+    background-color: #31347a;
+    display: flex;
+    flex-direction: row;
+    font-size: 50px;
+    color:white;
+}
+
+.Header-text{
+    margin: 40px;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(Sansation_Bold.ttf);
+ }
+ 
+ @font-face {
+    font-family: myFirstFont;
+    src: url(Sansation_Bold.ttf);
+    font-weight: bold;
+ }
+ 
+ * {
+    font-family: myFirstFont;
+ }
+
