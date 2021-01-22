@@ -1,0 +1,23 @@
+.data{
+    width: 300px;
+    height: 115px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-top: 200px;
+    font-family: "Times New Roman", Times, serif;
+
+
+}
+
+.box{
+    display:flex;
+    flex-direction: row;
+    /*border: 2px solid red;
+    border-radius: 5px;*/
+}
+
+.map{
+    border: 10px solid black;
+    margin: 40px;
+    background-color: solid white;
+}

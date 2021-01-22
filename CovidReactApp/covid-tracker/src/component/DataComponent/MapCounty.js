@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import { scaleQuantize } from "d3-scale";
 import { readRemoteFile } from 'react-papaparse'
 
@@ -23,85 +23,78 @@ class UserComponent extends React.Component{
 
     constructor(props){
         super(props)
-        //this.handleChange = this.handleChange.bind(this);
         this.state = {
-            counties:[]
+            counties:[],
+            countySelected:"Select a county",
+            countySelectedCases:0,
+            countySelectedDeaths:0
         }
     }
 
-    csvJSON(csv){
+    handleClick = geo => () => {
+        console.log(geo);
+        const cur = this.state.counties.find(s => s.county === geo.name);
+        this.setState({countySelected:geo.name});
+        this.setState({countySelectedCases:(cur ? cur.cases : -1)});
+        this.setState({countySelectedDeaths:(cur ? cur.deaths : -1)});  
+        this.forceUpdate();
+      };
 
-        var lines=csv.split("\n");
-      
-        var result = [];
-
-        var headers=lines[0].split(",");
-      
-        for(var i=1;i<lines.length;i++){
-      
-            var obj = {};
-            var currentline=lines[i].split(",");
-      
-            for(var j=0;j<headers.length;j++){
-                obj[headers[j]] = currentline[j];
-            }
-      
-            result.push(JSON.stringify(obj));
-      
-        }
-        return result; 
-    }
 
     componentDidMount()
     {
-        /*console.log("hello world");
-        fetch("https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-counties.csv").then((response) => {
-
-            //this.setState({counties : this.csvJSON(response.data)})
-            console.log(response.json);
-        })*/
-
-        /*fetch("https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-counties.csv")
-        .then((response) => {
-            this.setState({counties : response.data})
-        }*/
         readRemoteFile("https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-counties.csv", 
         {
             download: true,
             header:true,
             complete: (results) => 
             {
-                console.log(results.data)
-                //console.log("HELLO THERE" + results.data[60].county)
+                //console.log(results.data)
                 this.setState({counties : results.data})
             }
         })
-        /*UserService.getUsers().then((response) => {
-            this.setState({users : response.data})
-            console.log("done");
-        })*/
     }
 
     render (){
         return (
+            <div className="box">
             <>
-                <ComposableMap projection="geoAlbersUsa" width={1500} height={600}>
+                <ComposableMap className = "map" projection="geoAlbersUsa" 
+                projectionConfig={{
+                    scale: 800,
+                    rotation: [0, 0, 0],
+                    }}
+                    style={{ width: "60%", height: "auto" }}>
+                    <ZoomableGroup zoom={1}> 
                     <Geographies geography={geoUrl}>
                         {({ geographies }) =>
                         geographies.map(geo => {
                             const cur = this.state.counties.find(s => s.fips === geo.id);
-                            console.log(cur ? cur.cases + " " + cur.county: "not found");
                             return (
                             <Geography key={geo.rsmKey}
                             geography={geo}
                             fill={colorScale(cur ? cur.cases : "#EEE")}
+                            onClick={this.handleClick(geo.properties)}
                             />
                         );
                         })
                     }
                     </Geographies>
+                    </ZoomableGroup>
                 </ComposableMap>
             </>
+            <div className = "data">
+                    <p>
+                        County Selected: {this.state.countySelected}
+                    </p>
+                    <p>
+                        Number of cases: {this.state.countySelectedCases}
+                    </p>
+                    <p>
+                        Number of deaths: {this.state.countySelectedDeaths}
+                    </p>
+                </div>
+            </div>
 
         )
     }
