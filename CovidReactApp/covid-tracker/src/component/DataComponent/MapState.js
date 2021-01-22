@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComposableMap, Geographies, Geography, Marker, Annotation} from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, Marker, Annotation, ZoomableGroup} from "react-simple-maps";
 import { scaleQuantize } from "d3-scale";
 import { geoCentroid } from "d3-geo";
 import { readRemoteFile } from 'react-papaparse'
@@ -84,6 +84,7 @@ class UserComponent extends React.Component{
             rotation: [0, 0, 0],
             }}
             style={{ width: "60%", height: "auto" }} >
+            <ZoomableGroup zoom={1}> 
             <Geographies geography={geoUrl}>
               {({ geographies }) => (
                 <>
@@ -130,6 +131,7 @@ class UserComponent extends React.Component{
                 </>
               )}
             </Geographies>
+            </ZoomableGroup>
           </ComposableMap>
                 <div className = "data">
                     <p>

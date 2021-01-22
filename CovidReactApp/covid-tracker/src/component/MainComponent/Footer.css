@@ -1,0 +1,12 @@
+.Footer-body {
+    margin: 0px;
+    background-color: #242424;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    color:rgb(204, 204, 204);
+}
+
+.Footer-text{
+    margin: 40px;
+}

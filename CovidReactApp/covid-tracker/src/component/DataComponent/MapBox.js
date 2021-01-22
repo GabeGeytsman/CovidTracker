@@ -3,6 +3,7 @@ import MapState from './MapState';
 import MapCounty from './MapCounty';
 import cheerio from 'cheerio';
 import axios from 'axios';
+import './MapBox.css';
 
 class MapBox extends React.Component{
 
@@ -61,7 +62,7 @@ class MapBox extends React.Component{
         return(
         <div>
             {map}
-            <form>
+            <form className="buttons">
             <div className="radio">
             <label>
                 <input type="radio" name="button" onChange={this.setMapState}/>

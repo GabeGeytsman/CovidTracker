@@ -5,6 +5,7 @@
     border-radius: 5px;
     margin-top: 200px;
     font-family: "Times New Roman", Times, serif;
+    background-color: rgb(201, 201, 201);
 
 
 }
@@ -18,5 +19,6 @@
 
 .map{
     border: 10px solid black;
-    margin: 40px
+    margin: 40px;
+    background-color: rgb(201, 201, 201);
 }
