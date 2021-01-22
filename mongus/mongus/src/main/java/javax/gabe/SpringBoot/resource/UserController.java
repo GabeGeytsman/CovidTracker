@@ -1,10 +1,10 @@
-package javax.gabe.mongus.resource;
-
-import javax.gabe.mongus.repository.UserRepository;
+package javax.gabe.SpringBoot.resource;
 
 import java.util.List;
 import java.util.Optional;
-import javax.gabe.mongus.model.*;
+
+import javax.gabe.SpringBoot.model.*;
+import javax.gabe.SpringBoot.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

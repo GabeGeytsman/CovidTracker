@@ -2,8 +2,8 @@ package javax.gabe.mongus;
 
 import java.util.List;
 
-import javax.gabe.mongus.model.User;
-import javax.gabe.mongus.repository.UserRepository;
+import javax.gabe.SpringBoot.model.User;
+import javax.gabe.SpringBoot.repository.UserRepository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package javax.gabe.mongus.service;
+package javax.gabe.SpringBoot.service;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -9,8 +9,8 @@ import java.net.http.HttpResponse;
 import java.util.Date;
 import java.util.List;
 
-import javax.gabe.mongus.model.User;
-import javax.gabe.mongus.repository.UserRepository;
+import javax.gabe.SpringBoot.model.User;
+import javax.gabe.SpringBoot.repository.UserRepository;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;

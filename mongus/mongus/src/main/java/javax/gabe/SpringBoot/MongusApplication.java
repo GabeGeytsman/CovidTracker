@@ -1,4 +1,4 @@
-package javax.gabe.mongus;
+package javax.gabe.SpringBoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
